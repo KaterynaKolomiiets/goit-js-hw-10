@@ -3,7 +3,6 @@ import {fetchCountries} from './fetchCountries';
 import debounce from 'lodash.debounce'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-console.log(fetchCountries)
 
 const DEBOUNCE_DELAY = 300;
 
@@ -12,11 +11,11 @@ const countryListEl = document.querySelector('.country-list');
 const countryCardEl = document.querySelector(".country-info")
 
 const onInput = function () {
+  clearAll()
   let name = inputEl.value.trim();
 
     fetchCountries(name)
       .then(data => {
-        console.log(data)
         if (data.length > 10) {
           Notify.info('Too many matches found. Please enter a more specific name.');
         }
@@ -28,8 +27,6 @@ const onInput = function () {
         }
       })
       .catch(error => console.log(error));
-    
-  
 }
 
 
@@ -41,7 +38,7 @@ const renderCountryList = function (arr) {
     countryListEl.innerHTML = list
  }
 const renderCountryCard = function ([{ flag, name, capital, population, languages}] = item){
-    let text = `<img class="big-flag" src=${flag}> <h1>${name}</h1> <p>Capital: ${capital} </p><p>Population: ${population} </p><p>Languages: ${languages.map((item)=>item.name)}</p>`
+    let text = `<div class="flex"><img class="big-flag" src=${flag}><h1>${name}</h1></div><b>Capital:</b><span>${capital}</span><b>Population:</b><span>${population}</span><b>Languages:</b><span>${languages.map((item)=>item.name)}</span>`
     countryCardEl.innerHTML = text
 }
 const clearAll = function () {

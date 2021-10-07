@@ -25,15 +25,36 @@ ul, ol {
 li {
   list-style: none;
   display: flex;
+  margin: 15px 0;
+  font-size: 1.2rem;
+  min-height: 1.8rem;
+  display:flex;
+  align-items:center;
 }
 img {
   display: block;
 }
 .flag-icon{
-  height: 20px;
-  width: auto;
+  height: auto;
+  width: 50px;
+  margin-right: 20px;
+  
+}
+.country-info {
+  width: 300px;
+}
+.flex{
+  display:flex;
+  align-items: center;
 }
 .big-flag{
   height: 40px;
   width: auto;
+  margin-right: 20px;
+}
+h1 {
+  font-size: 2.2rem;
+}
+b {
+  margin-right: 10px;
 }
