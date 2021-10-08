@@ -12,6 +12,10 @@ const countryCardEl = document.querySelector('.country-info');
 const onInput = function () {
   clearAll();
   let name = inputEl.value.trim();
+  if (!name) {
+    Notify.warning('Search field can not be empty.');
+    return
+  }
 
   fetchCountries(name)
     .then(data => {
@@ -35,9 +39,9 @@ const renderCountryList = function (countries) {
   countryListEl.innerHTML = list;
 };
 const renderCountryCard = function ([{ flag, name, capital, population, languages }] = item) {
-  let text = `<div class="flex"><img class="big-flag" src=${flag}><h1>${name}</h1></div><b>Capital:</b><span>${capital}</span><b>Population:</b><span>${population}</span><b>Languages:</b><span>${languages.map(
+  let text = `<div class="flex"><img class="big-flag" src=${flag}><h1>${name}</h1></div><ul><li><b>Capital:</b>${capital}</li><li><b>Population:</b>${population}</li><li><b>Languages:</b>${languages.map(
     item => item.name,
-  )}</span>`;
+  )}</li><ul>`;
   countryCardEl.innerHTML = text;
 };
 const clearAll = function () {
