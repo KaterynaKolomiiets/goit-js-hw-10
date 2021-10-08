@@ -14,7 +14,7 @@ const onInput = function () {
   let name = inputEl.value.trim();
   if (!name) {
     Notify.warning('Search field can not be empty.');
-    return
+    return;
   }
 
   fetchCountries(name)
